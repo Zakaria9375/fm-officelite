@@ -1,0 +1,44 @@
+//colors
+$white-dark: #FAFAFA;
+$white-light: #fff;
+$blue-dark: #5175ff;
+$blue-light: #829CFF;
+$black-dark: #25293a;
+$black-light: #333950;
+$mygrey: #747b95;
+$myred: #f05b5b;
+
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+@mixin justTablet {
+  @media (min-width: 768px) and (max-width:992px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin wideScreen {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin setfont($s, $w, $l) {
+  font-size: $s;
+  font-weight: $w;
+  line-height: $l;
+}
+

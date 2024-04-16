@@ -1,1 +1,260 @@
-/* You can add global styles to this file, and also import other style files */
+@import "normalize";
+@import "base";
+
+* {
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  &:has(app-home) {
+    @include mobile {
+      background: linear-gradient(
+        to bottom,
+        $white-dark 0%,
+        $white-dark 57.435%,
+        $black-dark 57.435%,
+        $black-dark 100%
+      );
+    }
+    @include tablet {
+      background: linear-gradient(
+        to bottom,
+        $white-dark 0%,
+        $white-dark 54.81%,
+        $black-dark 54.81%,
+        $black-dark 100%
+      );
+    }
+    @include desktop {
+      background: linear-gradient(
+        to bottom,
+        $white-dark 0%,
+        $white-dark 66.23%,
+        $black-dark 66.23%,
+        $black-dark 100%
+      );
+    }
+  }
+  &:has(app-sign-up) {
+    @include mobile {
+      background: linear-gradient(
+        to bottom,
+        $white-dark 0%,
+        $white-dark 74.1%,
+        $black-dark 74.1%,
+        $black-dark 100%
+      );
+    }
+    @include tablet {
+      background: linear-gradient(
+        to bottom,
+        $white-dark 0%,
+        $white-dark 71.1%,
+        $black-dark 71.1%,
+        $black-dark 100%
+      );
+    }
+    @include desktop {
+      background: linear-gradient(
+        to right,
+        $white-light 0%,
+        $white-light 77%,
+        $black-dark 77%,
+        $black-dark 100%
+      );
+    }
+    @include wideScreen {
+      background: linear-gradient(
+        to right,
+        $white-light 0%,
+        $white-light 70.83%,
+        $black-dark 70.83%,
+        $black-dark 100%
+      );
+    }
+  }
+}
+.myapp {
+  overflow: hidden;
+  min-height: 100dvh;
+}
+.app-container {
+  margin-left: 24px;
+  margin-right: 24px;
+
+  @include tablet {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+.heading1 {
+  @include setfont(2.5rem, 700, 1.2);
+  color: $black-dark;
+  @include desktop {
+    font-size: 3.5rem;
+    line-height: 1.143;
+  }
+}
+.body1 {
+  @include setfont(1rem, 400, 1.625);
+  color: $mygrey;
+  @include desktop {
+    font-size: 1.125rem;
+    line-height: 1.56;
+    margin-bottom: 32px;
+  }
+}
+
+.timer-date-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 18px;
+  max-width: 28rem;
+  width: 100%;
+  @include desktop {
+    display: block;
+  }
+  h2.date {
+    @include setfont(1rem, 700, 3);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $white-light;
+    span {
+      color: $blue-dark;
+    }
+    @include desktop {
+      text-align: left;
+    }
+  }
+  .mytimer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    > div {
+      padding: 10px 16px;
+      border-radius: 4px;
+      text-align: center;
+      width: 4.5rem;
+      @include tablet {
+        width: 6.25rem;
+        padding: 28px 16px 18px;
+        border-radius: 13px;
+      }
+      h3 {
+        @include setfont(2rem, 700, 1.5);
+        @include tablet {
+          font-size: 3.5rem;
+          line-height: 0.857;
+        }
+      }
+      h4 {
+        @include setfont(0.75rem, 700, 2.333);
+        margin-top: -4px;
+        @include tablet {
+          margin-top: 6px;
+          font-size: 1rem;
+          line-height: 1.75;
+        }
+      }
+    }
+  }
+}
+
+header {
+  position: relative;
+  @include mobile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+  }
+  @include tablet {
+    margin-bottom: 104px;
+  }
+}
+
+//btns
+.btn,
+.btn-blue,
+.btn-grey,
+.btn-white {
+  padding: 14px 52.5px;
+  @include setfont(1rem, 700, 1.75);
+  border-radius: 28px;
+  border: none;
+}
+
+.btn-blue {
+  color: #fff;
+  background: $blue-dark;
+  &:hover {
+    background: $blue-light;
+  }
+}
+
+.btn-grey {
+  background: #5175ff15;
+  color: $blue-dark;
+  &:hover {
+    background: #5175ff25;
+  }
+}
+
+.btn-white {
+  color: $blue-dark;
+  background: #fff;
+  &:hover {
+    color: $blue-light;
+    background: #fff;
+  }
+}
+
+//inputs
+
+.form-input {
+  background: none;
+  border: none;
+  padding-left: 16px;
+  padding-bottom: 17px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #747b9550;
+  text-align: left;
+  @include setfont(1rem, 700, 1.75);
+  color: $black-light;
+  span {
+    margin-left: 8px;
+    color: #33395040;
+  }
+}
+input {
+  width: 100%;
+  padding-left: 16px;
+  padding-bottom: 17px;
+  position: relative;
+  border-bottom: 1px solid #747b9550;
+  @include setfont(1rem, 400, 1.75);
+  color: $black-light;
+  &::placeholder {
+    color: #747b9550;
+    text-transform: capitalize;
+  }
+  margin-top: 24px;
+}
+
+.form-error {
+  color: $myred;
+  border-color: $myred;
+}
+.image {
+  max-width: 100%;
+  max-height: 100%;
+}

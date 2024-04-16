@@ -1,0 +1,231 @@
+@import "base";
+
+:host {
+  margin-bottom: 100px;
+  @include desktop {
+    margin-bottom: 91px;
+  }
+}
+
+header {
+  @include desktop {
+    margin-bottom: 81px;
+  }
+
+  .bg-img {
+    position: absolute;
+    z-index: -1;
+    @include mobile {
+      max-width: 120dvw;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @include tablet {
+      max-width: 666px;
+      right: -50%;
+      top: 0;
+      transform: translateY(-33%);
+    }
+    @include desktop {
+      right: -46%;
+      max-width: 1134px;
+      transform: translateY(-45%);
+    }
+  }
+}
+
+main {
+  section.intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column-reverse;
+      row-gap: 64px;
+    }
+    .content {
+      max-width: 540px;
+      flex-basis: 50%;
+      @include mobile {
+        text-align: center;
+      }
+      h1 {
+        @include setfont(2.5rem, 700, 1.2);
+        color: $black-dark;
+        @include desktop {
+          font-size: 3.5rem;
+          line-height: 1.143;
+        }
+      }
+      p {
+        margin-top: 24px;
+        margin-bottom: 24px;
+        @include setfont(1rem, 400, 1.625);
+        color: $mygrey;
+        @include desktop {
+          font-size: 1.125rem;
+          line-height: 1.56;
+          margin-bottom: 32px;
+        }
+      }
+    }
+    .chart {
+      flex-basis: 45%;
+      img {
+        @include mobile {
+          max-width: 48dvw;
+        }
+      }
+    }
+  }
+  section.plans {
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+    row-gap: 32px;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    @include tablet {
+      row-gap: 24px;
+      margin-top: 140px;
+    }
+    @include desktop {
+      flex-direction: row;
+      margin-top: 184px;
+      margin-bottom: 82px;
+    }
+    article {
+      background-color: $white-light;
+      border-radius: 13px;
+      padding: 40px;
+      flex: 1;
+      box-shadow: 0px 50px 50px -25px rgba(75, 92, 154, 0.25);
+      text-align: center;
+      color: $black-light;
+      position: relative;
+      @include justTablet {
+        text-align: left;
+        padding: 48px;
+      }
+      h2 {
+        @include setfont(1.25rem, 700, 1.4);
+      }
+      h3 {
+        margin-top: 40px;
+        margin-bottom: 8px;
+        @include setfont(3.5rem, 700, 1.143);
+        @include justTablet {
+          margin-top: 16px;
+          margin-bottom: 4px;
+        }
+      }
+      h4 {
+        @include setfont(1rem, 400, 1.75);
+      }
+      .features {
+        margin-top: 56px;
+        @include justTablet {
+          position: absolute;
+          right: 91px;
+          top: 92px;
+          margin: 0;
+        }
+        h4 {
+          @include setfont(1rem, 400, 1.75);
+          color: $mygrey;
+          margin-bottom: 16px;
+        }
+      }
+      a {
+        margin-top: 16px;
+        @include justTablet {
+          margin-top: 24px;
+        }
+      }
+    }
+    .pro {
+      background-color: $blue-dark;
+      color: $white-light;
+      z-index: 0;
+      overflow: hidden;
+      .features h4 {
+        color: #ffffff75;
+      }
+      &::after {
+        content: url(../../assets/home/bg-pattern-pricing.svg);
+        position: absolute;
+        top: -75%;
+        right: 50%;
+        z-index: -1;
+        transform: translateX(50%);
+        @include justTablet {
+          left: -140%;
+          top: -90%;
+        }
+      }
+    }
+  }
+  section.counter {
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 91px;
+    }
+    .timer-date-container {
+      .mytimer {
+        > div {
+          background-color: $black-light;
+          h3 {
+            color: $white-light;
+
+          }
+          h4 {
+            color: #ffffff50;
+          }
+        }
+      }
+    }
+    a {
+      margin-top: 40px;
+      @include tablet {
+        margin-top: 48px;
+      }
+    }
+    .bg-img {
+      position: absolute;
+      overflow: hidden;
+      bottom: -44px;
+      z-index: -1;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 850px;
+      img {
+        max-width: 100%;
+      }
+      @include tablet {
+        width: 1454px;
+        bottom: -580px;
+      }
+      @include desktop {
+        height: 603px;
+        width: 100dvw;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -91px;
+        overflow: hidden;
+        img {
+          max-width: none;
+          object-fit: contain;
+          object-position: -685px -590px;
+        }
+      }
+    }
+  }
+}

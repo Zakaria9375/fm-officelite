@@ -1,0 +1,62 @@
+<header>
+    <img src="assets/home/bg-pattern-header.svg" alt="" class="bg-img">
+  <a routerLink="/">
+    <img src="assets/shared/logo.svg" alt="Go to Home Page">
+  </a>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="content">
+      <h1 class="heading1">A simple solution to complex tasks is coming soon</h1>
+      <p class="body1">Say goodbye to inefficient juggling of multiple apps, teams, and projects. Officelite is the new collaboration platform
+      built with an intuitive interface to improve productivity.</p>
+      <a routerLink="/sign-up" class="btn-blue">Get Started</a>
+    </div>
+    <div class="chart">
+      <img src="assets/home/illustration-charts.svg" alt="" class="image">
+    </div>
+  </section>
+  <section class="plans">
+    @for (plan of plans; track $index;) {
+      <article [ngClass]="{'pro': $odd}">
+        <h2>{{ plan.title }}</h2>
+        <h3>{{ plan.cost }}</h3>
+        <h4>{{ plan.users }}</h4>
+        <div class="features">
+          @for (feature of plan.features; track $index) {
+          <h4>{{ feature }}</h4>
+        }
+        </div>
+        <a routerLink="/sign-up" class="btn-grey" [ngClass]="{'btn-white': $odd}">Try for free</a>
+      </article>
+    }
+  </section>
+  <section class="counter">
+    <div class="timer-date-container">
+      <h2 class="date">coming <span>{{targetDate}}</span></h2>
+      <div class="mytimer">
+        <div>
+          <h3>{{ (countdown$ | async)?.days }}</h3>
+          <h4>days</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.hours }}</h3>
+          <h4>hours</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.minutes }}</h3>
+          <h4>min</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.seconds }}</h3>
+          <h4>sec</h4>
+        </div>
+      </div>
+    </div>
+    <a routerLink="/sign-up" class="btn-blue">Get Started</a>
+    <div class="bg-img">
+      <img src="assets/home/bg-pattern-footer.svg" alt="">
+    </div>
+  </section>
+</main>

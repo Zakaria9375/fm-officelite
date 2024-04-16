@@ -1,0 +1,140 @@
+<header>
+  <a routerLink="/">
+    <img src="assets/shared/logo.svg" alt="Go to Home Page" />
+  </a>
+</header>
+<main>
+  <section class="intro">
+    <h1 class="heading1">Work smarter. Save time.</h1>
+    <p class="body1">
+      Easily manage your projects. Get on the list and receive in-app perks
+      available only to early subscribers. We are moving into final development
+      and getting ready for official launch soon.
+    </p>
+    <div class="timer-date-container">
+      <h2 class="date">
+        coming <span>{{ targetDate }}</span>
+      </h2>
+      <div class="mytimer">
+        <div>
+          <h3>{{ (countdown$ | async)?.days }}</h3>
+          <h4>days</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.hours }}</h3>
+          <h4>hours</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.minutes }}</h3>
+          <h4>min</h4>
+        </div>
+        <div>
+          <h3>{{ (countdown$ | async)?.seconds }}</h3>
+          <h4>sec</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  @if (isSubmitted) {
+  <section class="success-msg" role="alert">
+    <h2>Form has been submitted</h2>
+    <h3>Thank you</h3>
+  </section>
+  } @else {
+  <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+    <div
+      [ngClass]="{ 'form-wrapper-error': name.errors && name.touched }"
+      class="first-input"
+    >
+      <input
+        type="text"
+        placeholder="Name"
+        aria-label="Name"
+        name="name"
+        [(ngModel)]="contact.name"
+        required
+        #name="ngModel"
+        [class.form-error]="name.errors && name.touched"
+      />
+    </div>
+    <div
+      [ngClass]="{ 'form-wrapper-error': email.errors && email.touched }"
+    >
+      <input
+        type="email"
+        placeholder="Email Address"
+        aria-label="Email Address"
+        name="email"
+        [(ngModel)]="contact.email"
+        required
+        email
+        #email="ngModel"
+        [class.form-error]="email.errors && email.touched"
+      />
+    </div>
+
+    <div class="menu" (appClickOutside)="closePlansMenu()">
+      <button
+        type="button"
+        (click)="showPlans()"
+        class="selected-plan form-input"
+        [ngClass]="{ opened: showPlanMenu }"
+        [attr.aria-expanded]="showPlanMenu"
+        aria-haspopup="true"
+        aria-label="Select a plan"
+        aria-live="polite"
+      >
+        {{ selectedPlan.title }} <span>{{ selectedPlan.cost }}</span>
+      </button>
+      @if (showPlanMenu) {
+      <div class="plan-menu" role="menu">
+        @for (item of plans; track $index) {
+        <button
+          type="button"
+          class="form-input"
+          [class.selected]="item === selectedPlan"
+          (click)="onPlanSelect(item)"
+          role="option"
+          [attr.aria-selected]="item === selectedPlan"
+        >
+          {{ item.title }} <span>{{ item.cost }}</span>
+        </button>
+        }
+      </div>
+      }
+    </div>
+    <div
+      [ngClass]="{ 'form-wrapper-error': phone.errors && phone.touched }"
+    >
+      <input
+        type="tel"
+        placeholder="Phone Number"
+        aria-label="Phone Number"
+        name="phone"
+        [(ngModel)]="contact.phone"
+        required
+        #phone="ngModel"
+        [class.form-error]="phone.errors && phone.touched"
+      />
+    </div>
+    <input
+      type="text"
+      placeholder="Company"
+      aria-label="Company"
+      name="company"
+      [(ngModel)]="contact.company"
+    />
+    <span
+      class="general-error"
+      *ngIf="contactForm.invalid && contactForm.submitted"
+      role="alert"
+    >
+      Falied to submit: incomplete/invalid form
+    </span>
+    <button type="submit" class="btn-blue">Get on the list</button>
+  </form>
+  }
+</main>
+<div class="bgs-img">
+  <img src="assets/sign-up/bg-pattern-side.svg" alt="" />
+</div>

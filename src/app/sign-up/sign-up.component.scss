@@ -1,0 +1,224 @@
+@import "base";
+
+:host {
+  margin-bottom: 87px;
+  position: relative;
+  @include tablet {
+    margin-bottom: 126px;
+  }
+  @include desktop {
+    position: static;
+  }
+}
+
+header {
+  @include desktop {
+    margin-bottom: 126px;
+  }
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 87px;
+  @include tablet {
+    margin-bottom: 126px;
+  }
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  section.intro {
+    max-width: 540px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include desktop {
+      text-align: left;
+      display: block;
+    }
+    p {
+      margin-top: 16px;
+      margin-bottom: 64px;
+      @include tablet {
+        margin-top: 24px;
+        margin-bottom: 40px;
+      }
+    }
+    .timer-date-container {
+      margin-top: 64px;
+      margin-bottom: 64px;
+      @include tablet {
+        margin-top: 40px;
+        margin-bottom: 104px;
+      }
+      @include desktop {
+        margin-bottom: 0;
+      }
+      h2.date {
+        color: $black-light;
+      }
+      .mytimer {
+        > div {
+          background-color: #5175ff10;
+          h3 {
+            color: $blue-dark;
+          }
+          h4 {
+            color: #33395050;
+          }
+        }
+      }
+    }
+  }
+  form {
+    max-width: 445px;
+    background-color: $white-light;
+    border-radius: 13px;
+    box-shadow: 0px 50px 50px -25px rgba(75, 92, 154, 0.25);
+    padding: 24px;
+    @include tablet {
+      padding: 40px 42px 51px 43px;
+    }
+
+    .menu {
+      position: relative;
+      .selected-plan {
+        margin-top: 24px;
+        &::after {
+          position: absolute;
+          content: url(../../assets/sign-up/icon-arrow-down.svg);
+          right: 24px;
+        }
+        &.opened {
+          &::after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+      .plan-menu {
+        position: absolute;
+        bottom: -206px;
+        border-radius: 8px;
+        border: 1px solid rgba(51, 57, 80, 0.15);
+        background: #fff;
+        z-index: 1;
+        box-shadow: 0px 50px 50px -25px rgba(75, 92, 154, 0.75);
+        padding: 8px 32px;
+        .form-input:last-of-type {
+          border-bottom: none;
+        }
+        .form-input {
+          padding: 16px 0;
+        }
+        .selected::after {
+          content: url(../../assets/sign-up/icon-check.svg);
+          position: absolute;
+          right: 0;
+          top: 16px;
+        }
+      }
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      margin-top: 40px;
+    }
+    .general-error {
+      display: inline-block;
+      color: $myred;
+      @include setfont(1rem, 400, 1.25);
+      padding: 12px 4px 0;
+    }
+  }
+}
+
+.bgs-img {
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+  @include mobile {
+    bottom: -87px;
+    left: -24px;
+    width: 100dvw;
+    height: 320px;
+    img {
+      object-position: -414px -410px;
+      object-fit: contain;
+      max-width: 1202px;
+    }
+  }
+
+  @include tablet {
+    bottom: -126px;
+    left: -40px;
+    height: 380px;
+    img {
+      max-width: 1454px;
+      object-fit: contain;
+      object-position: -277px -534px;
+    }
+  }
+  @include desktop {
+    width: 420px;
+    height: 100dvh;
+    right: 0;
+    left: auto;
+    top: 0;
+    img {
+      max-width: 2036px;
+      object-fit: contain;
+      object-position: -774px -768px;
+    }
+  }
+}
+
+.form-wrapper-error {
+  position: relative;
+  &::after {
+    content: url(../../assets/sign-up/icon-cross.svg);
+    position: absolute;
+    z-index: 1;
+    right: 20px;
+    top: 28px;
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+}
+
+.first-input {
+  input {
+    margin: 0;
+  }
+  &::after {
+    top: 4px;
+  }
+}
+
+.success-msg {
+  text-align: center;
+  min-height: 400px;
+  min-width: 325px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 445px;
+  background-color: $white-light;
+  border-radius: 13px;
+  box-shadow: 0px 50px 50px -25px rgba(75, 92, 154, 0.25);
+  padding: 24px;
+  @include tablet {
+    padding: 40px 42px 51px 43px;
+  }
+  h2 {
+    @include setfont(1.25rem, 400, 1.25);
+    color: $black-light;
+  }
+  h3 {
+    margin-top: 24px;
+    @include setfont(1.375rem, 700, 1.4);
+    color: $blue-dark;
+  }
+}
