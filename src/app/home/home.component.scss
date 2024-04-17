@@ -8,8 +8,9 @@
 }
 
 header {
+
   @include desktop {
-    margin-bottom: 81px;
+    margin-bottom: 101px;
   }
 
   .bg-img {
